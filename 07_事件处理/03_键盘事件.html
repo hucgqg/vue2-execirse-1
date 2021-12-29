@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>键盘事件</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>欢迎来到{{name}}</h4>
+        <!-- @keyup输入松开键盘就会触发，使用@keyup.enter回车后才可以
+        获取键盘按键的值和名称使用@keyup，console.log(e.key, e.keyCode) 
+    再使用tab键角发时需要使用@keydown-->
+        <input type="text" placeholder="键盘回车提示输入" @keydown.huiche="showInfo">
+        <!-- @keyup.ctrl.y  按ctrl+y生效 -->
+        <input type="text" placeholder="键盘回车提示输入" @keyup.ctrl.y="showInfo">
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    Vue.config.keyCodes = {// 自定义键盘按键
+        "kebab-case": 179,
+        "huiche": 13
+    };
+
+    const vm = new Vue({
+        data: {
+            name: "china"
+        },
+        methods: {
+            showInfo(e) {
+                // console.log(e.key, e.keyCode) // 获取键盘按键的值和名称
+                console.log(e.target.value)
+            }
+        },
+    })
+    vm.$mount("#root")
+</script>
+
+</html>

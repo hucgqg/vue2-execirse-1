@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>人员列表，数组遍历</h4>
+        <ul v-for="(p,index) in persons" :key="index">
+            <li>
+                {{p.name}}-{{p.age}}
+            </li>
+        </ul>
+        <!-- in of的功能是一样的 -->
+        <h4>对象遍历</h4>
+        <ul v-for="(value,key) of car" :key="key">
+            <li>
+                {{key}}-{{value}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#root",
+        data: {
+            persons:
+                [
+                    { id: 01, name: "zhangsan", age: 11 },
+                    { id: 02, name: "lisi", age: 22 },
+                    { id: 03, name: "wanger", age: 33 },
+                ],
+            car: {
+                name: "qq汽车",
+                date: "2021.11.23",
+                addr: "china"
+            }
+        }
+    })
+</script>
+
+</html>

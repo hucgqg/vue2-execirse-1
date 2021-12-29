@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 演示的示例是引入vue.js时睡眠5秒 -->
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+    <style>
+        /* 配合这里的CSS使用，当v-cloak存在时不展示，vue.js介入时v-cloak就会消失，解决网速慢时页面展示出{{xxxx}}的问题*/
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <h4 v-cloak>{{name}}</h4>
+
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#root",
+        data: {
+            name: "北京"
+        }
+    })
+</script>
+
+</html>

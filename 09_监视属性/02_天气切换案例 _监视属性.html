@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>今天天气很{{info}}</h4>
+        <button @click="changeWeather">点击切换天气</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        data: {
+            isHot: true
+        },
+        computed: {
+            info() {
+                return this.isHot ? "火热" : "寒冷"
+            }
+        },
+        methods: {
+            changeWeather() {
+                this.isHot = !this.isHot
+            }
+        },
+        // watch: {
+        //     // isHot: { 
+        //     info: { //isHot和info属性都可以进行监视
+        //         immediate: true, //默认是false改成true初始化时会调用
+        //         handler(newHandler, oldHandler) {
+        //             console.log("info被调用", newHandler, oldHandler)
+        //         }
+        //     }
+        // }
+    })
+    vm.$mount('#root');
+    vm.$watch("info", { //这里的写法和上面的watch的写法是一样的，上面的写法通常是清楚要监视谁时直接写，这里的写法是后期添加的写法 
+        immediate: true, //默认是false改成true初始化时会调用
+        handler(newHandler, oldHandler) {
+            console.log("info被调用", newHandler, oldHandler)
+        }
+    })
+</script>
+
+</html>

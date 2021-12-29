@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>我是{{name}}</h4>
+        <button v-on:click="showInfo">点我提示信息1</button>
+        <button @click="showInfo2($event,66)">点我提示信息2</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    const vm = new Vue({
+        data: {
+            name: "张三"
+        },
+        methods: {
+            // 这里的showInfo可以写在data里，但是showInfo这里的函数只是用来调用，不需要做数据代理和劫持
+            showInfo() {
+                alert("欢迎你")
+            },
+            showInfo2(event, number) {
+                console.log(event)
+                console.log(number)
+                alert("hello")
+            }
+        },
+    })
+    vm.$mount("#root")
+</script>
+
+</html>

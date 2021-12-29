@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <!-- v-show做条件渲染 -->
+        <h4 v-show="b">hello world</h4>
+        <h4 v-show="1===1">hello world</h4><br><br>
+        <!-- v-if做条件渲染 -->
+        <h4 v-if="b">hello world</h4>
+        <h4 v-if="1===1">hello world</h4><br><br>
+
+        <h4>当前值是{{n}}</h4>
+        <button @click="n++">点我n+1</button>
+        <div v-show="n===1">hhh</div><br><br>
+        <div v-show="n===2">lll</div><br><br>
+        <div v-show="n===3">mmm</div><br><br>
+        <!-- v-if中间不可以被打断 -->
+        <div v-if="n===1">现在是1</div>
+        <div v-else-if="n===2">现在是2</div>
+        <div v-else-if="n===3">现在是3</div>
+        <div v-else>啥也不是</div>
+
+        <!-- template只可以和v-if配合使用，使用template在页面上不展示出来，却可以控制一个组 -->
+        <template v-if="n===5">
+            <h5>hello</h5>
+            <h5>china</h5>
+            <h5>beijing</h5>
+        </template>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    new Vue({
+        el: "#root",
+        data: {
+            b: false,
+            n: 0
+        },
+    })
+</script>
+
+</html>

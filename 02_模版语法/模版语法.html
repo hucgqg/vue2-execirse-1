@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>模版语法</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h1>插值语法</h1>
+        <h2>姓名：{{name}}</h2>
+        <hr>
+        <h1>指令语法</h1>
+        <a v-bind:href="baidu.url">点我去{{baidu.name}}</a>
+        <a :href="qq.url">点我去{{qq.name}}</a>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        new Vue({
+            el: "#root",
+            data: {
+                name: "jack",
+                baidu: {
+                    url: "https://m.baidu.com",
+                    name: "百度"
+                },
+                qq: {
+                    url: "https://m.qq.com",
+                    name: "QQ"
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html>

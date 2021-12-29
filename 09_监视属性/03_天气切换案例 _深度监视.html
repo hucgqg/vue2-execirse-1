@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>a的值是{{numbers.a}}</h4>
+        <h4>b的值是{{numbers.b}}</h4>
+        <button @click="numbers.a++">点我a+1</button>
+        <button @click="numbers.b++">点我b+1</button>
+    </div>
+
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        data: {
+            isHot: true,
+            numbers: {
+                a: 1,
+                b: 1
+            }
+        },
+        watch: {
+            numbers: {
+                // 可以进行深度监测，无论numbers里的层级有多深都可以监视
+                // vue 本身是可以进行监测的，但是watch默认是不可以的，通过deep来开启深度监测功能
+                deep: true,
+                handler() {
+                    console.log("numbers改变了")
+                }
+            }
+        }
+    })
+    vm.$mount('#root');
+</script>
+
+</html>

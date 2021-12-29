@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>人员列表</h4>
+        <input type="text" placeholder="输入关键字" v-model="keyWorld">
+        <ul>
+            <li v-for="(p,index) in filPersons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    // #region  // 折叠使用
+    // watch方式实现
+    /*
+    new Vue({
+        el: "#root",
+        data: {
+            keyWorld: "",
+            persons:
+                [
+                    { id: 01, name: "abc", age: 11, sex: "m" },
+                    { id: 02, name: "bcd", age: 22, sex: "l" },
+                    { id: 03, name: "cde", age: 33, sex: "l" },
+                    { id: 04, name: "def", age: 44, sex: "m" },
+                ],
+            firPersons: []
+        },
+        watch: {
+            keyWorld: {
+                immediate: true,
+                handler(value) {
+                    this.firPersons = this.persons.filter((p) => {
+                        return p.name.indexOf(value) !== -1
+                    })
+                }
+            }
+        }
+    })
+    */
+    //#endregion
+
+    // computed 方式实现
+    new Vue({
+        el: "#root",
+        data: {
+            keyWorld: "",
+            persons:
+                [
+                    { id: 01, name: "abc", age: 11, sex: "m" },
+                    { id: 02, name: "bcd", age: 22, sex: "l" },
+                    { id: 03, name: "cde", age: 33, sex: "l" },
+                    { id: 04, name: "def", age: 44, sex: "m" },
+                ],
+        },
+        computed: {
+            filPersons() {
+                return this.persons.filter((p) => {
+                    return p.name.indexOf(this.keyWorld) !== -1
+                })
+            }
+        }
+    })
+</script>
+
+</html>

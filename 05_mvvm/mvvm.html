@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>MVVM</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>Name:{{name}}</h4>
+        <h4>Age:{{age}}</h4>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data() {
+                return {
+                    name: "Tom",
+                    age: 22
+                }
+            },
+        })
+        console.log(vm)
+        vm.$mount('#root');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h4>人员列表</h4>
+        <input type="text" placeholder="输入关键字" v-model="keyWorld">
+        <button @click="sortType=0">原顺序</button>
+        <button @click="sortType=1">升序</button>
+        <button @click="sortType=2">降序</button>
+        <ul>
+            <li v-for="(p,index) in filPersons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.sex}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+    new Vue({
+        el: "#root",
+        data: {
+            keyWorld: "",
+            sortType: 0, // 0 原顺序  1 降序  2 升序
+            persons:
+                [
+                    { id: 01, name: "abc", age: 66, sex: "m" },
+                    { id: 02, name: "bcd", age: 22, sex: "l" },
+                    { id: 03, name: "cde", age: 88, sex: "l" },
+                    { id: 04, name: "age", age: 44, sex: "m" },
+                    { id: 05, name: "cws", age: 09, sex: "m" },
+                    { id: 06, name: "aec", age: 11, sex: "m" },
+                ],
+        },
+        computed: {
+            filPersons() {
+                const arr = this.persons.filter((p) => {
+                    return p.name.indexOf(this.keyWorld) !== -1
+                })
+                if (this.sortType) {
+                    arr.sort((p1, p2) => {
+                        return this.sortType === 1 ? p1.age - p2.age : p2.age - p1.age
+                    })
+                }
+                return arr
+            }
+        }
+    })
+</script>
+
+</html>

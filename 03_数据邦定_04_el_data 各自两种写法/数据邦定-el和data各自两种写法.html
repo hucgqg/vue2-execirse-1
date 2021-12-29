@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据邦定</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 普通写法 -->
+        <!-- 单向邦定: <input type="text" v-bind:value="name"><br>
+        双向邦定: <input type="text" v-model:value="name"><br> -->
+        <!-- 简写 -->
+        单向邦定: <input type="text" :value="name"><br>
+        双向邦定: <input type="text" v-model="name"><br>
+        <!-- h4这种写法是错的，v-model只对有value值输入类型的才有作用 -->
+        <!-- <h4 v-model:x="name">hello</h4> -->
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false
+        // const v = new Vue({
+        //     // el: "#root",   这种写法和下面的 v.$mount('#root'); 写法是一样的
+        //     data: {
+        //         name: "北京"
+        //     }
+        // })
+        // console.log(v)
+        // setTimeout(() => { //定时器是为了演示数据5秒后才展示的效果
+        //     v.$mount('#root')
+        // }, 5000);
+
+
+        // data 的两种写法
+        const v = new Vue({
+            data() {
+                console.log("###", this)
+                return {
+                    name: "上海"
+                }
+            },
+        })
+        v.$mount('#root');
+    </script>
+</body>
+
+</html>

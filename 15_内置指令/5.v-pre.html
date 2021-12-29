@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 添加v-pre后VUE将不在去解释该标签，写什么值就是什么值，没用到语法或是指令的可以使用提高效率 -->
+        <h4 v-pre>显示n值：</h4>
+        <h4>{{n}}</h4>
+        <button @click="n++">点击n+1</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false;
+
+    new Vue({
+        el: "#root",
+        data: {
+            n: 1
+        }
+    })
+</script>
+
+</html>

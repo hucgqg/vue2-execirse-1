@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .basic {
+            width: 400px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .happy {
+            width: 400px;
+            height: 100px;
+            border: 5px solid rgb(243, 2, 2);
+            background-color: rgb(248, 149, 20);
+        }
+
+        .sad {
+            width: 400px;
+            height: 100px;
+            border: 5px solid rgb(243, 2, 2);
+            background-color: rgb(27, 228, 1);
+        }
+
+        .normal {
+            width: 400px;
+            height: 100px;
+            border: 5px solid rgb(60, 57, 243);
+            background-color: rgb(187, 103, 110);
+        }
+
+        .s1 {
+            border: 5px solid rgb(27, 228, 1);
+        }
+
+        .s2 {
+            border-radius: 25px;
+        }
+
+        .s3 {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <!-- 邦定字符串样式，字符串写法，适用样式类名不确定，需要动态指定 -->
+        <div class="basic" :class="mood" @click="changeMood">{{name}}</div><br><br>
+        <!-- 邦定字符串样式，数组写法，适用邦定的样式个数、名称不确定 -->
+        <div class="basic" :class="classArr">{{name}}</div><br><br>
+        <!-- 邦定字符串样式，数组写法，适用邦定的样式确定个数、名称，但要动态确定用不用 -->
+        <div class="basic" :class="classObj">{{name}}</div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+    const vm = new Vue({
+        el: "#root",
+        data: {
+            name: "China",
+            mood: "normal",
+            classArr: ["s1", "s2", "s3"],
+            classObj: {
+                s1: false,
+                s2: false,
+                s3: false
+            }
+        },
+        methods: {
+            changeMood() {
+                // 创建数组，让mood随机获取数组里的值
+                const arr = ["happy", "sad", "normal"]
+                this.mood = arr[Math.floor(Math.random() * 3)]
+            }
+        },
+    })
+</script>
+
+</html>

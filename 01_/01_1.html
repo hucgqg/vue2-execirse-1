@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>01_</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h5>姓名：{{name}}</h5>
+        <h5>年龄：{{age}}</h5>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false // 阻止 vue 在启动时生成生产提示。
+        // 创建VUE实例
+        new Vue({
+            el: "#root", // el:element用于指定当前实例为哪个容器服务 ，通常值为CSS选择器字符串，id=root的标签
+            data: {      // data用来存储数据，提供给el指定的容器使用
+                name: "张三",
+                age: 18
+            }
+        })
+
+    </script>
+</body>
+
+</html>
